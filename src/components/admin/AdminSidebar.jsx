@@ -112,6 +112,11 @@ export default function AdminSidebar({ user, onLogout }) {
             <span className="text-sm">Logout</span>
           </button>
         </div>
+          </button>
+          <div className="pt-2 text-center">
+            <span className="text-[10px] text-slate-600">v1.0.FIX-UPLOAD</span>
+          </div>
+        </div>
       </div>
     </aside>
   );
