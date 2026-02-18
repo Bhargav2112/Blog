@@ -33,8 +33,8 @@ export const PAGES = {
   terms: Terms,
   admindashboard: AdminDashboard,
   adminposts: AdminPosts,
-  "admin-create-post": AdminCreatePost, // Keep kebab for file consistency if needed, but user asked for lowercase keys... keeping kebab for components that might use it
-  "admin-edit-post": AdminEditPost,
+  admincreatepost: AdminCreatePost,
+  admineditpost: AdminEditPost,
   admincategories: AdminCategories,
   adminusers: AdminUsers,
   adminmessages: AdminMessages,
