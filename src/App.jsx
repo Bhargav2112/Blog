@@ -49,7 +49,7 @@ const AuthenticatedApp = () => {
 
   // Routes configuration
   const GuestRoutes = ["login", "register", "forgot-password"];
-  const AdminRoutes = ["admindashboard", "adminposts", "admincategories", "adminusers", "adminmessages", "admincreatepost", "admineditpost"];
+  const AdminRoutes = ["admindashboard", "adminposts", "admincategories", "adminusers", "adminmessages", "admincreatepost", "admineditpost", "admin-create-post", "admin-edit-post"];
   const UserRoutes = ["profile", "savedposts"];
 
   return (

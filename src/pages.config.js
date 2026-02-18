@@ -34,7 +34,9 @@ export const PAGES = {
   admindashboard: AdminDashboard,
   adminposts: AdminPosts,
   admincreatepost: AdminCreatePost,
+  "admin-create-post": AdminCreatePost, // Legacy support
   admineditpost: AdminEditPost,
+  "admin-edit-post": AdminEditPost, // Legacy support
   admincategories: AdminCategories,
   adminusers: AdminUsers,
   adminmessages: AdminMessages,

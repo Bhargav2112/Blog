@@ -34,7 +34,9 @@ export default function Layout({ children, currentPageName }) {
     "adminusers",
     "adminmessages",
     "admincreatepost",
-    "admineditpost"
+    "admin-create-post",
+    "admineditpost",
+    "admin-edit-post"
   ];
   const isAuthPage = authPages.includes(currentPageName);
   const isAdminPage = adminPages.includes(currentPageName);
