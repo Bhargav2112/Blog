@@ -51,7 +51,8 @@ export const AuthProvider = ({ children }) => {
     const enhanceUser = async (sessionUser) => {
        if (!sessionUser) return null;
        
-       let role = sessionUser.email === "bsparmar1221@gmail.com" ? "admin" : "user";
+       const adminEmails = ["bsparmar1221@gmail.com", "admin@gmail.com", import.meta.env.VITE_ADMIN_EMAIL].filter(Boolean);
+       let role = adminEmails.includes(sessionUser.email) ? "admin" : "user";
        const dbRole = await fetchProfile(sessionUser.id);
        if (dbRole) role = dbRole;
 
