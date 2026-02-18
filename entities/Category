@@ -1,0 +1,34 @@
+{
+  "name": "Category",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Category name"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly slug"
+    },
+    "description": {
+      "type": "string",
+      "description": "Category description"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Icon name from Lucide"
+    },
+    "color": {
+      "type": "string",
+      "description": "Category accent color"
+    },
+    "post_count": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "name",
+    "slug"
+  ]
+}
