@@ -146,6 +146,7 @@ export default function AdminEditPost() {
         status: publishNow ? "published" : formData.status,
       };
 
+      console.log("🚀 Updating Post Data:", postData);
       await base44.entities.BlogPost.update(postId, postData);
 
       toast({
