@@ -52,9 +52,10 @@ export const AuthProvider = ({ children }) => {
        if (!sessionUser) return null;
        
        const adminEmails = ["bsparmar1221@gmail.com", "admin@gmail.com", import.meta.env.VITE_ADMIN_EMAIL].filter(Boolean);
-       let role = adminEmails.includes(sessionUser.email) ? "admin" : "user";
+       const isHardcodedAdmin = adminEmails.includes(sessionUser.email);
+       
        const dbRole = await fetchProfile(sessionUser.id);
-       if (dbRole) role = dbRole;
+       let role = isHardcodedAdmin ? "admin" : (dbRole || "user");
 
        return {
          ...sessionUser,
