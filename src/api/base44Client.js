@@ -38,17 +38,35 @@ export const base44 = {
         return data || [];
       },
       create: async (data) => {
+        // SANITIZATION: Explicitly remove reading_time if present
+        const cleanData = { ...data };
+        if ('reading_time' in cleanData) {
+            console.warn("⚠️ Stripping reading_time from payload in base44Client");
+            delete cleanData.reading_time;
+        }
+
+        console.log("Creating BlogPost with:", cleanData);
+
         const { data: res, error } = await supabase
           .from("blog_posts")
-          .insert([data])
+          .insert([cleanData])
           .select();
         if (error) throw error;
         return res[0];
       },
       update: async (id, data) => {
+        // SANITIZATION: Explicitly remove reading_time if present
+        const cleanData = { ...data };
+        if ('reading_time' in cleanData) {
+            console.warn("⚠️ Stripping reading_time from payload in base44Client");
+            delete cleanData.reading_time;
+        }
+
+        console.log("Updating BlogPost with:", cleanData);
+
         const { data: res, error } = await supabase
           .from("blog_posts")
-          .update(data)
+          .update(cleanData)
           .eq("id", id)
           .select();
         if (error) throw error;
