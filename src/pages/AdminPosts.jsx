@@ -278,7 +278,7 @@ export default function AdminPosts() {
             <div className="text-center py-12">
               <FileText className="w-12 h-12 text-slate-600 mx-auto mb-3" />
               <p className="text-slate-400 mb-4">No posts found</p>
-              <Link to={createPageUrl("admin-create-post")}>
+              <Link to={createPageUrl("admincreatepost")}>
                 <GoldButton>Create Your First Post</GoldButton>
               </Link>
             </div>

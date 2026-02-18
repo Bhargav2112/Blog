@@ -130,7 +130,7 @@ export default function AdminCreatePost() {
       if (publishNow && newPost?.id) {
          navigate(createPageUrl("blogdetail") + `?id=${newPost.id}`);
       } else {
-         navigate(createPageUrl("admin-posts"));
+         navigate(createPageUrl("adminposts"));
       }
     } catch (error) {
       console.error("Failed to create post:", error);

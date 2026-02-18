@@ -156,7 +156,7 @@ export default function AdminEditPost() {
       if (publishNow) {
           navigate(createPageUrl("blogdetail") + `?id=${postId}`);
       } else {
-          navigate(createPageUrl("admin-posts"));
+          navigate(createPageUrl("adminposts"));
       }
     } catch (error) {
       console.error("Failed to update post:", error);
@@ -175,7 +175,7 @@ export default function AdminEditPost() {
       description: "Post deleted successfully",
       variant: "default",
     });
-    navigate(createPageUrl("admin-posts"));
+    navigate(createPageUrl("adminposts"));
   };
 
   const quillModules = {

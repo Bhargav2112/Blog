@@ -115,7 +115,7 @@ export default function AdminDashboard() {
               Welcome back, {user?.full_name || "Admin"}!
             </p>
           </div>
-          <Link to={createPageUrl("admin-create-post")}>
+          <Link to={createPageUrl("admincreatepost")}>
             <GoldButton>
               <Plus className="w-4 h-4 mr-2" />
               New Post

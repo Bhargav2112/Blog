@@ -46,7 +46,7 @@ export default function AdminSidebar({ user, onLogout }) {
 
       {/* Quick Action */}
       <div className="p-4 border-b border-slate-800">
-        <Link to={createPageUrl("admin-create-post")}>
+        <Link to={createPageUrl("admincreatepost")}>
           <GoldButton className="w-full">
             <Plus className="w-4 h-4 mr-2" />
             New Post
