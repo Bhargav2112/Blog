@@ -104,29 +104,42 @@ export default function AdminCreatePost() {
 
     setSaving(true);
 
-    // Exclude tags and reading_time as they don't exist in the database schema
-    const { tags, reading_time, ...validPostData } = formData;
-    
-    const postData = {
-      ...validPostData,
-      status: publishNow ? "published" : formData.status,
-      author_name: user?.full_name || "Admin",
-    };
+    try {
+      // Explicitly construct payload to avoid sending non-existent columns
+      const postData = {
+        title: formData.title,
+        slug: formData.slug,
+        excerpt: formData.excerpt,
+        content: formData.content,
+        cover_image: formData.cover_image,
+        category: formData.category,
+        is_featured: formData.is_featured,
+        status: publishNow ? "published" : formData.status,
+        author_name: user?.full_name || "Admin",
+      };
 
-    const newPost = await base44.entities.BlogPost.create(postData);
+      const newPost = await base44.entities.BlogPost.create(postData);
 
-    setSaving(false);
-    toast({
-      description: publishNow
-        ? "Post published successfully!"
-        : "Post saved as draft",
-      variant: "default",
-    });
-    
-    if (publishNow && newPost?.id) {
-       navigate(createPageUrl("blogdetail") + `?id=${newPost.id}`);
-    } else {
-       navigate(createPageUrl("admin-posts"));
+      toast({
+        description: publishNow
+          ? "Post published successfully!"
+          : "Post saved as draft",
+        variant: "default",
+      });
+      
+      if (publishNow && newPost?.id) {
+         navigate(createPageUrl("blogdetail") + `?id=${newPost.id}`);
+      } else {
+         navigate(createPageUrl("admin-posts"));
+      }
+    } catch (error) {
+      console.error("Failed to create post:", error);
+      toast({
+        description: "Failed to create post. Please check console for details.",
+        variant: "destructive",
+      });
+    } finally {
+      setSaving(false);
     }
   };
 

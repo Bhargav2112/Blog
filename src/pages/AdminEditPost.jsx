@@ -133,26 +133,39 @@ export default function AdminEditPost() {
 
     setSaving(true);
 
-    // Exclude tags and reading_time as they don't exist in the database schema
-    const { tags, reading_time, ...validPostData } = formData;
+    try {
+       // Explicitly construct payload to avoid sending non-existent columns
+      const postData = {
+        title: formData.title,
+        slug: formData.slug,
+        excerpt: formData.excerpt,
+        content: formData.content,
+        cover_image: formData.cover_image,
+        category: formData.category,
+        is_featured: formData.is_featured,
+        status: publishNow ? "published" : formData.status,
+      };
 
-    const postData = {
-      ...validPostData,
-      status: publishNow ? "published" : formData.status,
-    };
+      await base44.entities.BlogPost.update(postId, postData);
 
-    await base44.entities.BlogPost.update(postId, postData);
-
-    setSaving(false);
-    toast({
-      description: "Post updated successfully!",
-      variant: "default",
-    });
-    
-    if (publishNow) {
-        navigate(createPageUrl("blogdetail") + `?id=${postId}`);
-    } else {
-        navigate(createPageUrl("admin-posts"));
+      toast({
+        description: "Post updated successfully!",
+        variant: "default",
+      });
+      
+      if (publishNow) {
+          navigate(createPageUrl("blogdetail") + `?id=${postId}`);
+      } else {
+          navigate(createPageUrl("admin-posts"));
+      }
+    } catch (error) {
+      console.error("Failed to update post:", error);
+      toast({
+        description: "Failed to update post. Please check console for details.",
+        variant: "destructive",
+      });
+    } finally {
+      setSaving(false);
     }
   };
 
