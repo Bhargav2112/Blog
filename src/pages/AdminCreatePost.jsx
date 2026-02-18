@@ -118,7 +118,7 @@ export default function AdminCreatePost() {
         author_name: user?.full_name || "Admin",
       };
 
-      console.log("🚀 Sending Post Data:", postData);
+      console.error("🚀 DEBUG: Sending Post Data (Check for reading_time):", postData);
       const newPost = await base44.entities.BlogPost.create(postData);
 
       toast({
