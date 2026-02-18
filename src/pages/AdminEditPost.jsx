@@ -133,8 +133,11 @@ export default function AdminEditPost() {
 
     setSaving(true);
 
+    // Exclude tags and reading_time as they don't exist in the database schema
+    const { tags, reading_time, ...validPostData } = formData;
+
     const postData = {
-      ...formData,
+      ...validPostData,
       status: publishNow ? "published" : formData.status,
     };
 

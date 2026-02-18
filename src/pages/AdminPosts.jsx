@@ -219,8 +219,8 @@ export default function AdminPosts() {
                       <td className="p-4 hidden lg:table-cell">
                         <span className="text-slate-400 flex items-center gap-1">
                           <Calendar className="w-4 h-4" />
-                          {post.created_date
-                            ? format(new Date(post.created_date), "MMM d, yyyy")
+                          {post.created_at
+                            ? format(new Date(post.created_at), "MMM d, yyyy")
                             : "-"}
                         </span>
                       </td>
